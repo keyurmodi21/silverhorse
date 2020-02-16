@@ -11,15 +11,15 @@ It also uses eslint and typescript
 
 - In the project directory, run:
 
-  - ## `npm i`
+  - ### `npm i`
 
     - this will download all the project dependencies
 
 - then run:
 
-  - ## `npm start`
+  - ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser (Brave, Firefox, Chrome).
 
-## The app is build using create-react-app and it comes with built in webpack bundler
+### The app is build using create-react-app and it comes with built in webpack bundler
