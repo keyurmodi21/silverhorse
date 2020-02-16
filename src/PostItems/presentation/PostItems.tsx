@@ -7,7 +7,8 @@ import Paper from "@material-ui/core/Paper";
 import {
   FilteringState,
   IntegratedFiltering,
-  EditingState
+  EditingState,
+  ChangeSet
 } from "@devexpress/dx-react-grid";
 
 import {
@@ -16,8 +17,10 @@ import {
   TableHeaderRow,
   TableFilterRow,
   TableEditRow,
-  TableEditColumn
+  TableEditColumn,
+  VirtualTable,
 } from "@devexpress/dx-react-grid-material-ui";
+
 
 const styles = theme => ({
   tableStriped: {
@@ -41,27 +44,27 @@ function PostItems(props) {
   const [columns] = useState([
     {
       name: "post",
-      title: "Post",
+      title: "POST",
       getCellValue: row => (row.post ? row.post.title : undefined)
     },
     {
       name: "album",
-      title: "Album",
+      title: "ALBUM",
       getCellValue: row => (row.album ? row.album.title : undefined)
     },
     {
       name: "user",
-      title: "User",
+      title: "USER",
       getCellValue: row => (row.user ? row.user.name : undefined)
     }
   ]);
 
-  const commitChanges = ({ changed, deleted }) => {
-    if (changed) {
-      props.editPostTitle(changed);
+  const commitChanges = (commit: ChangeSet) => {
+    if (commit.changed) {
+      props.editPostTitle(commit.changed);
     }
-    if (deleted) {
-      props.deleteRow(deleted);
+    if (commit.deleted) {
+      props.deleteRow(commit.deleted);
     }
   };
 
@@ -80,11 +83,12 @@ function PostItems(props) {
     }
   ];
 
+  const Root = props => <Grid.Root {...props} style={{ height: "100%" }} />;
   const { postItems } = props;
 
   return (
-    <Paper>
-      <Grid rows={postItems} columns={columns} getRowId={getRowId}>
+    <Paper style={{ height: '100vh' }}>
+      <Grid rows={postItems} columns={columns} getRowId={getRowId} rootComponent={Root}>
         <FilteringState defaultFilters={[]} />
         <IntegratedFiltering />
         <EditingState
@@ -93,6 +97,7 @@ function PostItems(props) {
         />
 
         <Table tableComponent={TableComponent} />
+        <VirtualTable />
         <TableHeaderRow />
         <TableFilterRow />
         <TableEditRow />
