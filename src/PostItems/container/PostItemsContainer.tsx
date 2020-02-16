@@ -104,6 +104,7 @@ export default class PostItemsContainer extends React.PureComponent<Props, State
       ).then(() => this.setState({ openNotifier: false }));
     }
 
+    /* 
     let aToObj = Object.assign({}, this.state.postItems);
 
     let MyObject = {
@@ -115,6 +116,7 @@ export default class PostItemsContainer extends React.PureComponent<Props, State
         }
       }
     };
+    */
 
     // update the post title manually in local state to display the changes
     // @ts-ignore
