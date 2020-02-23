@@ -1,4 +1,4 @@
-This is Silverhorse Technology Front End exercise solution using ReactJS, Material UI Library and DevExpress.
+This is CRUD app using ReactJS, Material UI Library and DevExpress.
 It also uses eslint and typescript
 
 ## Steps to run the application
